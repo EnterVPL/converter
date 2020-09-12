@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../Button';
 
 
 function Select(props) {
@@ -17,8 +18,14 @@ function Calculator () {
 	const [currencyFrom, setCurrencyFrom] = useState('PLN');
 	const [currencyTo, setCurrencyTo] = useState('USD');
 
+	const handlerSubmit = (event) => {
+		event.preventDefault();
+		console.log(event);
+		fetch('https://api.ratesapi.io/api/latest?base=PLN');
+	}
+
 	return (
-		<form>
+		<form onSubmit={handlerSubmit}>
 			<div>
 				<input type="number" placeholder="Amount" onChange={(event) => setAmount(event.target.value)} />
 			</div>
@@ -31,6 +38,7 @@ function Calculator () {
 				<Select val={currencyTo} change={setCurrencyTo} />
 			</div>
 			<div>Result: <span> {amount} </span></div>
+			<Button>Send</Button>
 		</form>
 	);
 }
