@@ -4,11 +4,11 @@ function Calculator () {
 	return (
 		<form>
 			<div>
-				<input type="number" placeholder="Amount" />
+				<input type="number" placeholder="Amount" onChange={(event) => console.log(event.target.value)} />
 			</div>
 			<div>
 				<span>From:</span>
-				<select>
+				<select onChange={(event) => console.log(event.target.value)}>
 					<option value="USD">USD</option>
 					<option value="PLN">PLN</option>
 					<option value="GBP">GBP</option>
@@ -24,6 +24,7 @@ function Calculator () {
 					<option value="EUR">EUR</option>
 				</select>
 			</div>
+			<div>Result: <span> --- </span></div>
 		</form>
 	);
 }
